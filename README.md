@@ -42,11 +42,11 @@ It is mandatory to use VirtualBox. 42 computers already have VirtualBox installe
 
 2.7. Choose a recommended virtual hard disk size of ```12GB``` if you are going to do only mandatory part or ```30GB``` if you are going to do the bonus part. Then click on ```Create```.
 
-<img width="703" alt="2 7  Choose virtual memory size" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/96793a4e-4674-41ff-acfc-e93b08ae1c89">
+<img width="701" alt="2 7  Choose virtual memory size" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/73622d8e-ac0f-4520-8e52-77ffa4bf6da2">
 
 2.8. Now the machine appears on the VirtualBox Manager window. But we need to configure it, click on ```Settings```.
 
-<img width="934" alt="2 8  Configure the machine" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/8f1f35b6-16e1-4f90-a927-9f1ec0b1af33">
+<img width="931" alt="2 8  Configure the machine" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/7fb47b11-b8d0-41b7-8ab7-d222801bb9f6">
 
 2.9. In the window that opens move to ```Storage``` tab, then click on the ```Empty``` disc. In ```Attributes``` click on the disc icon. Inside the menu that unfolds click on ```Choose a disk file...```.
 
@@ -62,7 +62,7 @@ It is mandatory to use VirtualBox. 42 computers already have VirtualBox installe
 
 2.12. Now the virtual machine is ready to ```Start```.
 
-<img width="929" alt="2 12  Ready to Start" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/1309d602-4694-4b8d-871e-3ebee5a5f348">
+<img width="931" alt="2 12  Ready to Start" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/c547c956-3beb-4928-936f-5b360dfddf4c">
 
 ## Debian installation
 
