@@ -51,7 +51,7 @@ It is mandatory to use VirtualBox. 42 computers already have VirtualBox installe
 
 3.7. Choose a recommended virtual hard disk size of ```12GB``` if you are going to do only mandatory part or ```30GB``` if you are going to do the bonus part. Then click on ```Create```.
 
-<img width="701" alt="2 7  Choose virtual memory size" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/73622d8e-ac0f-4520-8e52-77ffa4bf6da2">
+<img width="703" alt="3 7  Choose virtual memory size" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/6f58a512-52cb-44ea-9da2-9a727714325a">
 
 3.8. Now the machine appears on the VirtualBox Manager window. But we need to configure it, click on ```Settings```.
 
