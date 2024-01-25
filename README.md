@@ -31,7 +31,7 @@ It is mandatory to use VirtualBox. 42 computers already have VirtualBox installe
 
 3.2. Choose a name for the machine and the folder in which you want to located it. It is important to choose the goinfre folder of your 42 computer because if not you will run out of memoory and installation will fail.
 
-<img width="683" alt="2 2  Chooose a name" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/8dc8683d-833c-48b3-875d-0651fe158a12">
+<img width="684" alt="3 2  Chooose a name" src="https://github.com/javierjimenezfernandez/born2beroot/assets/120647408/8ce9d965-0f4d-4576-af1b-0f7a43e580b2">
 
 3.3. Select the RAM that will be reserved for the machine. The recommended is 1024MB.
 
