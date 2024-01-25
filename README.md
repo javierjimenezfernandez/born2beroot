@@ -75,7 +75,7 @@ It is mandatory to use VirtualBox. 42 computers already have VirtualBox installe
 
 ## 4. Debian installation
 
-After clicking on ```Start```, but before doing anything, it is highly recommended to scale the window so it is comfortable to read.
+Now follow the original tutorial step ```3- Installing Debian``` : [Spanish version](https://github.com/gemartin99/Born2beroot-Tutorial?tab=readme-ov-file#3--instalaci%C3%B3n-debian-) or [English version](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md#3--installing-debian-)
 
 
 
