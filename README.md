@@ -77,7 +77,7 @@ It is mandatory to use VirtualBox. 42 computers already have VirtualBox installe
 
 Now follow the original tutorial step ```3- Installing Debian``` : [Spanish version](https://github.com/gemartin99/Born2beroot-Tutorial?tab=readme-ov-file#3--instalaci%C3%B3n-debian-) or [English version](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md#3--installing-debian-)
 
-Disclaimer, in gemartin99's Born2beroot Tutorial he adds a ```at least 1 lowercase``` condition for the password policy that is not specified in the subject.
+Disclaimer, in gemartin99's Born2beroot Tutorial he adds ```lcredit=-1``` (at least 1 lowercase) condition for the password policy that is not specified in the subject.
 
 I also like [rphlr's tutorial](https://github.com/rphlr/42-born2beroot).
 
