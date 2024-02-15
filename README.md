@@ -98,10 +98,11 @@ I followed the following steps: ```Prerequisites```, ```Fail2Ban Setup``` and ``
 ### 5.1 Here are the steps to configure Fail2Ban:
 
 ```
-apt install iptables iptables-persistent
+apt install iptables
 apt install python3-systemd
 apt install fail2ban
 ```
+> I didn't install ```iptables-persistent``` because it causes a conflict with ufw and when one is installed the other needs to be uninstalled and viceversa. Good news are that for this project it is not necessary for iptables to be persistent
 
 Copy the default file into a new local one, that is the file I modified:
 ```
