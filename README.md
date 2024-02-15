@@ -1,6 +1,8 @@
 # born2beroot
 born2beroot project made for 42 school Madrid
 
+***I am doing born2beroot project with the Bonus part in February 2024. Subject version is 3.1***
+
 I use [gemartin99's Born2beroot Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial) as a base for my tutorial with some additions of my own. When there is no change I directly follow gemartin99's original tutorial.
 
 ## 1. Prepare your workspace
@@ -77,10 +79,88 @@ It is mandatory to use VirtualBox. 42 computers already have VirtualBox installe
 
 Now follow the original tutorial step ```3- Installing Debian``` : [Spanish version](https://github.com/gemartin99/Born2beroot-Tutorial?tab=readme-ov-file#3--instalaci%C3%B3n-debian-) or [English version](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md#3--installing-debian-)
 
+In step ```3.15``` you are going to be redirected to ```8.1 - Manual Partitioning``` for the bonus part. When you finish with ```8.1``` don't forget to return to ```4 - Virtual Machine configuration``` before going to ```8.2 - WordPress and services configuration```.
 
+***ATTENTION:*** in gemartin99's Born2beroot Tutorial he adds ```lcredit=-1``` (at least 1 lowercase) condition for the password policy that is not specified in the subject.
 
+I also liked to use [rphlr's tutorial](https://github.com/rphlr/42-born2beroot) as a reference.
 
+## 5. Extra service
 
+I didn't like the extra service chosen by gemartin99, for me it made no sense to create another server when one of the mandatory services of the bonus part is creating a WordPress site So I tried vsFTPd from rphlr's tutorial [Installation and configuration of FTP](https://github.com/rphlr/42-born2beroot?tab=readme-ov-file#2-file-transfer-protocol-ftp) to trasfer files to the virtual machine to customize the WordPress site... ***but it didn't work for me***. I was unable to configure it properly: I experimented problems when trying to install WorsPress applications in the WordPress admin page so I couldn't demonstrate teh service. 
 
+So finally I tried the other extra service rphlr installs: [Fail2ban](https://github.com/rphlr/42-born2beroot?tab=readme-ov-file#3-fail2ban-just-because-i-would-like-to-implement-it-as-an-additional-security-measure-in-addition-to-ftp)
 
+***Unfortunatelly the configuration in that tutorial didn't work for me***, so I used this tutorial for Debian 12: [Fail2Ban Setup on Debian](https://zacks.eu/fail2ban-setup-on-debian-enhance-your-system-security/).
+
+I followed the following steps: ```Prerequisites```, ```Fail2Ban Setup``` and ```Fail2Ban Configuration```. Inside ```Fail2Ban Configuration```I just followed the first two steps: ```Main Configuration Files``` and ```SSH Configuration```. In ```Main Configuration Files``` I didn't configurate ```allowipv6 = no``` nor the Actions when the IP is banned, just the ban. 
+
+### 5.1 Here are the steps to configure Fail2Ban:
+
+```
+apt install iptables iptables-persistent
+apt install python3-systemd
+apt install fail2ban
+```
+
+Copy the default file into a new local one, that is the file I modified:
+```
+sudo cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
+```
+
+This is my configuration in jail.local file, search for the lines in MISCELLANEOUS OPTIONS chapter to modify them:
+```
+## MISCELLANEOUS OPTIONS
+bantime = 300
+findtime = 3600
+maxretry = 3
+backend = systemd
+```
+
+> "Let's observe those options. In the example above, if the violating host (IP) is discovered three times (maxretry) in one hour (findtime = 3600), it will be banned from accessing the server during the next 5 minutes (bantime = 300)."
+
+I configured just 5 minutes because this is just an exercise for academical purposes.
+
+Also in jail.local, inside JAILS in SSH servers:
+```
+## JAILS
+# SSH servers
+[sshd]
+port = 4242
+logpath = /var/log/fail2ban.log
+```
+> The file ```/var/log/fail2ban.log``` has to be created manualy.
+
+SSHd jail is enabled by default in Fail2Ban Debian installation. Please check ```/etc/fail2ban/jail.d/defaults-debian.conf```. In this file I added the following line for extra security:
+
+```mode = agressive```
+
+To apply all changes I made:
+```
+systemctl restart fail2ban.service
+systemctl restart fail2ban
+```
+
+To check that everything is OK:
+```
+sudo systemctl status fail2ban
+```
+> press ```q``` to quit
+
+If sshd Jail is active it will appear in the Jail list:
+```
+sudo fail2ban-client status
+```
+
+Status info about sshd Jail:
+```
+sudo fail2ban-client status sshd
+```
+
+> If there is a banned IP, for example, during the evaluation when you try to demonstrate the service and try to connect to the virtual machine using an incorrect password 3 times, the command above will show your blocked IP.
+
+To unban an IP manually:
+```
+sudo fail2ban-client set sshd unbanip [IP_to_unban]
+```
 
