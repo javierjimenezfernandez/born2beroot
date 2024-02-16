@@ -87,7 +87,9 @@ I also liked to use [rphlr's tutorial](https://github.com/rphlr/42-born2beroot) 
 
 ## 5. Extra service
 
-I didn't like the extra service chosen by gemartin99, for me it made no sense to create another server when one of the mandatory services of the bonus part is creating a WordPress site So I tried vsFTPd from rphlr's tutorial [Installation and configuration of FTP](https://github.com/rphlr/42-born2beroot?tab=readme-ov-file#2-file-transfer-protocol-ftp) to trasfer files to the virtual machine to customize the WordPress site... ***but it didn't work for me***. I was unable to configure it properly: I experimented problems when trying to install WorsPress applications in the WordPress admin page so I couldn't demonstrate teh service. 
+I didn't like the extra service chosen by gemartin99. For me it made no sense to create another server when one of the mandatory services of the bonus part is creating a WordPress site in a Lighttpd server. 
+
+So I tried vsFTPd from rphlr's tutorial [Installation and configuration of FTP](https://github.com/rphlr/42-born2beroot?tab=readme-ov-file#2-file-transfer-protocol-ftp) to trasfer files to the virtual machine to customize the WordPress site... ***but it didn't work for me***. I was unable to configure it properly: I experimented problems when trying to install WorsPress applications in the WordPress admin page (WordPress was unable to find wp-content directory despite it was there and I set the permissions) so I couldn't properly demonstrate the service. 
 
 So finally I tried the other extra service rphlr installs: [Fail2ban](https://github.com/rphlr/42-born2beroot?tab=readme-ov-file#3-fail2ban-just-because-i-would-like-to-implement-it-as-an-additional-security-measure-in-addition-to-ftp)
 
