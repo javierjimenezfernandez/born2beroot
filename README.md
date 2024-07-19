@@ -167,3 +167,67 @@ To unban an IP manually:
 sudo fail2ban-client set sshd unbanip [IP_to_unban]
 ```
 
+
+## 6. My super tip for the evaluation (Please do it before setting the project as finished in the 42 intra!)
+
+Install the manual on your machine, so that every time during your evaluation you forget how to use a command or the evaluator asks you something you are not prepared for, you can look it up and solve it just like in the exams. You will demonstrate exactly what this project is for, not to memorise everything, but to develop the ability to build your own virtual machine and to look up the information you need in the virtual machine itself.
+```
+sudo apt-get install man-db
+```
+
+## 7. Theory
+Here I leave the theoretical concepts that I thought I had learned correctly for the evaluation, but my 42 peers showed that I learned them wrong. I hope you find it helpful because I had a hard time finding precise and more understandable definitions of the concepts asked in this project.
+
+I am not an expert in system administration so if you find any mistakes please let me know.
+Thank you.
+
+### 7.1. VM (Virtual Machine)
+The Virtual Machine is a computer simulated inside another computer. The emulator (in this project VirtualBox) simulates the HW of the computer of your choice and runs the OS on that simulated HW. The physical computer is called host and the simulated one is the virtual machine.
+
+### 7.2. Use of VMs
+One of the main uses of VMs is to provide a safe and separated execution environment for your applications. It aims to provide replicable conditions whatever your platform is, but the reality is that performance and physical resources of the host’s HW limit that supposed universal replicability.
+
+### 7.3. Why Debian? Rocky vs. Debian
+Theoretically Rocky is not more complex than Debian or vice versa. The main reason to choose one or the other is because Rocky was developed by a company and is an OS focused on production for companies while Debian is an open source OS developed by an independent community and focused on stability, so each version remains longer. Rocky was released in 2021 (although it is based on RHEL's CentOS, which is older) and Debian in 1993. That is the reason why it is easier to find Debian documentation adapted to all levels of expertise, so that is why it is more common to choose Debian for this project.
+
+All the other typical reasons are also valid, such as Debian's larger community, more packages available and support for a wider range of architectures.
+
+### 7.4. Difference between apt and aptitude
+Both are package managers for linux. Apt is lower level than aptitude, we can say aptitude is smarter. When you install a package using apt it can recognize whether there are dependencies or if there are unused packages after the installation, but if there is some conflict during the installation of the package or the dependencies it will not provide a way to solve it. It will be the user responsibility to manage it. On the other hand, aptitude will propose you safe ways to solve that conflict.
+
+### 7.5. What is APPArmor?
+Is a linux kernel security module that allows the system admin to restrict the actions that processes can make. While write already avoids the modification of memory regions where the user is not allowed APPArmor allows the admin to configure profiles of an application to determine what files and permissions the application requires to be executed, so it can be encapsulated and don’t act where it is not supposed.
+
+It comes by default with Debian.
+
+### 7.6. What is LVM?
+Logical Volume Manager is a logic layer between the file system and the partitions of the data storage. The difference between primary and logical partitions is that primary partitions in a physical disc are written on it in a way that every time a disc is connected every partition is identified and differentiated from the others. Primary partitions have a maximum of 4. On the other hand, logical partitions are written inside a primary partition and allow the user to organize the content in different partitions which are no “visible” until the content of the disc is read. Logical partitions allow the user to extend, reduce, remove or add new partitions at any moment without formatting the disc. On the other hand, the modification of primary partitions require disc formatting which forces the user to do a security copy of the data in order to not losing it.
+
+You can find a nice explanation about file system, partitions and mounting points for linux in [DELL official support page](https://www.dell.com/support/kbdoc/es-es/000131456/the-types-and-definitions-of-ubuntu-linux-partitions-and-directories-explained?lang=en)
+
+### 7.7. What is UFW?
+The firewall is a security system responsible for granting or denying access between networks by configuring which ports to open or close.
+
+Uncomplicated Firewall is an interface to modify the firewall configuration without compromising security. If UFW is enabled you can grant access through specific ports, which is a requirement for this project, and it is very useful to use it in combination with SSH. UFW can also allow or deny specific IPs and application profiles.
+
+### 7.8. What is SSH?
+Secure Shell is a network protocol that serves as an authentication mechanism in the communication between a client and a host. It allows access, for example, to our virtual machine (client) from our real machine (host) via command line.
+
+Communication is established in an encrypted manner and the default communication port is 22. That is why in this project we are asked to change it, to increase security.
+
+### 7.9. sudo and su
+The root user is the user who has administrative access to the system. For security reasons, normal users do not have access to the system.
+
+Su stands for switch user or substitute user. It is an application that allows a user to execute commands under a different account, for example the root user or another privileged account. The application will prompt you for the username and password of the user you wish to switch to. However, sudo does have some advantage over su.
+
+Sudo stands for su do. It is an application that temporarily grants the ability to execute some commands with root privileges to certain users or groups of users. The access and privileges of users or user groups can be configured. It will also keep a log file of the commands and their arguments. Sudo will remember the password for a default time of 5 minutes.
+
+#### 7.9.1. what is requiretty?
+TTY stands for teletypewriter, but is popularly known as the terminal. It allows you to interact with the system by passing your commands and viewing the output produced by the system.
+
+The subject specifies that for security reasons TTY mode shall be enabled. This is done specifying requiretty in the sudo_config file as you should know. Requiretty forces sudo to make sure that you are logged into a TTY session. This protects the system from cron, apache and other automated scripts. However, the constraints posed by requiretty are sometimes easy to bypass, because it only works with sudo.
+
+#### 7.9.2. what is secure_path?
+PATH is a system environment variable where it will look for specific program commands that you can run via the command line, such as “cd”, “ls”, “sudo”, etc...
+
+The secure_path for sudo stores the path you know where those programs are stored, so when a command is called using sudo, sudo will look for it in that path. It may be the case that a user creates his own “cd” and stores it in a different path, which can be added to the PATH variable. The point is that whenever you need superuser permissions to perform an action you will have to call the sudo command and it will look for the command called with sudo only in the secure_path provided in the sudo rules configuration file. This way you make sure that only real and safe commands are used in the restricted areas instead of some malware introduced by the user.
