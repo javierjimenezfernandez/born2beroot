@@ -1,9 +1,21 @@
+<div align="center">
+
+  <img style="max-width: 100%;" alt="Born2beroot" src="https://github.com/javierjimenezfernandez/42-project-badges/blob/main/badges/born2berootm.png">
+
 # born2beroot
 born2beroot project made for 42 school Madrid
 
-***I am doing born2beroot project with the Bonus part in February 2024. Subject version is 3.1***
+***I did born2beroot project with the Bonus part in February 2024. Subject version 3.1***
+
+***I was evaluated on 24 April and succeded with 125/100***
+
+You can check my intra profile [here](https://profile.intra.42.fr/users/javjimen)
 
 I use [gemartin99's Born2beroot Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial) as a base for my tutorial with some additions of my own. When there is no change I directly follow gemartin99's original tutorial.
+
+</div>
+
+<div align="justify">
 
 ## 1. Prepare your workspace
 Usually space is very limited in 42 computers so there is a folder available for students in a local server in which to install your virtual machine. In my case this folder is called ```sgoinfre``` and there are some rulles to use it, please make sure you follow the rules of your folder. 
@@ -231,3 +243,5 @@ The subject specifies that for security reasons TTY mode shall be enabled. This 
 PATH is a system environment variable where it will look for specific program commands that you can run via the command line, such as “cd”, “ls”, “sudo”, etc...
 
 The secure_path for sudo stores the path you know where those programs are stored, so when a command is called using sudo, sudo will look for it in that path. It may be the case that a user creates his own “cd” and stores it in a different path, which can be added to the PATH variable. The point is that whenever you need superuser permissions to perform an action you will have to call the sudo command and it will look for the command called with sudo only in the secure_path provided in the sudo rules configuration file. This way you make sure that only real and safe commands are used in the restricted areas instead of some malware introduced by the user.
+
+</div>
